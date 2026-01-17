@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    printf("Salary Tax Calculation\n");
+
+    float salary, tax;
+
+    printf("Enter your salary: ");
+    if (scanf("%f", &salary) != 1) {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    if (salary <= 40000) {
+        printf("You are not taxed.\n");
+    }
+    else if (salary <= 50000) {
+
+        tax = salary * 0.065;
+        printf("You pay %.2f in taxes.\n", tax);
+    }
+    else if (salary <= 100000) {
+ 
+        tax = salary * 0.13;
+        printf("You pay %.2f in taxes.\n", tax);
+    }
+    else if (salary <= 200000) {
+  
+        tax = salary * 0.23;
+        printf("You pay %.2f in taxes.\n", tax);
+    }
+    else {
+        printf("The salary is very high, enjoy!\n");
+    }
+
+    return 0;
+}
