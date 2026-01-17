@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+    int hours, minutes;
+
+    printf("Enter time in 24h format (HH:MM): ");
+
+    if (scanf(" %d:%d", &hours, &minutes) != 2) {
+        printf("Invalid format. Please use HH:MM\n");
+        return 1;
+    }
+
+    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+        printf("Invalid time entered.\n");
+        return 1;
+    }
+
+    const char *period = (hours >= 12) ? "PM" : "AM";
+
+    int hours12 = hours;
+    
+    if (hours == 0) {
+        hours12 = 12; 
+    } else if (hours > 12) {
+        hours12 = hours - 12; 
+    }
+    printf("12h format: %d:%02d %s\n", hours12, minutes, period);
+
+    return 0;
+}
