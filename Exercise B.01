@@ -5,7 +5,11 @@ int main() {
     int max, side1, side2;
 
     printf("Enter three positive sides of a triangle: ");
-    scanf("%d %d %d", &a, &b, &c);
+ 
+    if (scanf("%d %d %d", &a, &b, &c) != 3) {
+        printf("Error: Please enter three valid integers.\n");
+        return 1;
+    }
 
     if (a >= b && a >= c) {
         max = a; side1 = b; side2 = c;
@@ -15,10 +19,14 @@ int main() {
         max = c; side1 = a; side2 = b;
     }
 
-    if (max * max == side1 * side1 + side2 * side2) {
+    if (side1 + side2 <= max) {
+        printf("These sides do NOT form a valid triangle.\n");
+    } 
+   
+    else if (max * max == (side1 * side1 + side2 * side2)) {
         printf("It is a right triangle.\n");
     } else {
-        printf("It is NOT a right triangle.\n");
+        printf("It is a valid triangle, but NOT a right triangle.\n");
     }
 
     return 0;
